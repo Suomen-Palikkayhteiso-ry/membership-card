@@ -88,7 +88,7 @@
 		ctx.font = `400 ${baseFontSize}px 'Outfit', sans-serif`;
 		ctx.textAlign = 'left';
 
-		ctx.fillText(`Name: ${tokenDetails.name}`, 25, baseFontSize * 5);
+		ctx.fillText(`Name: ${tokenDetails?.name}`, 25, baseFontSize * 5);
 		ctx.fillText(`Effective Date: ${user.profile.effective_date}`, 25, baseFontSize * 7);
 		ctx.fillText(`Expiration Date: ${user.profile.expiration_date}`, 25, baseFontSize * 9);
 	}

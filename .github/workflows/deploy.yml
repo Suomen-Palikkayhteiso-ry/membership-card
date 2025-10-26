@@ -30,9 +30,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          VITE_PUBLIC_OIDC_AUTHORITY: ${{ secrets.VITE_PUBLIC_OIDC_AUTHORITY }}
-          VITE_PUBLIC_OIDC_CLIENT_ID: ${{ secrets.VITE_PUBLIC_OIDC_CLIENT_ID }}
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
