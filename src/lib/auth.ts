@@ -8,9 +8,7 @@ const authority =
 const client_id = import.meta.env.OIDC_CLIENT_ID || 'd31f9cee-fbe6-4672-8085-76500eb25691';
 const redirect_uri =
 	import.meta.env.OIDC_REDIRECT_URI ||
-	(browser
-		? `${window.location.origin}/callback`
-		: 'https://kortti.suomenpalikkayhteisory.fi/callback');
+	(browser ? `${window.location.origin}/callback` : 'http://localhost:5173/callback');
 
 const userManager = new UserManager({
 	authority,

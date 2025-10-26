@@ -1,0 +1,30 @@
+<script lang="ts">
+	/* @ts-ignore */
+	import { FaSignInAlt } from 'svelte-icons/fa';
+	import { login } from '../lib/auth';
+</script>
+
+<div class="space-y-6 text-center"></div>
+
+<div class="centered-icon">
+	<button
+		class="login-button"
+		type="button"
+		aria-label="Kirjaudu"
+		on:click={login}
+		style="background:none;border:none;padding:0;cursor:pointer;color: #52d3d8;"
+	>
+		<FaSignInAlt size="10vw" />
+	</button>
+</div>
+
+<style>
+	.centered-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		width: 100vw;
+		background: transparent;
+	}
+</style>
