@@ -3,12 +3,16 @@
 	import { getUser, login, logout } from '../lib/auth';
 	import type { User } from 'oidc-client-ts';
 
+	interface TokenDetails {
+		name: string;
+	}
+
 	let user: User | null = $state(null);
 	let canvas: HTMLCanvasElement = $state() as HTMLCanvasElement;
-	let tokenDetails: any = null;
+	let tokenDetails: TokenDetails | null = $state(null);
 	let debouncedDraw: () => void;
 
-	function parseJwt(token: string) {
+	function parseJwt(token: string): TokenDetails {
 		const base64Url = token.split('.')[1];
 		const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
 		const jsonPayload = decodeURIComponent(
@@ -24,9 +28,9 @@
 		return JSON.parse(jsonPayload);
 	}
 
-	function debounce<T extends (...args: any[]) => any>(func: T, wait: number) {
-		let timeout: any;
-		return function (this: any, ...args: Parameters<T>) {
+	function debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
+		let timeout: ReturnType<typeof setTimeout>;
+		return function (this: unknown, ...args: Parameters<T>) {
 			clearTimeout(timeout);
 			timeout = setTimeout(() => func.apply(this, args), wait);
 		};

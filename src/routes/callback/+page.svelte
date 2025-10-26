@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	import { completeLogin } from '../../lib/auth';
 
 	let error = $state<string | null>(null);
@@ -8,7 +7,7 @@
 	onMount(async () => {
 		try {
 			await completeLogin();
-			goto('/');
+			location.href = '/';
 		} catch (e) {
 			error = e instanceof Error ? e.message : 'Authentication failed';
 		}
@@ -23,7 +22,12 @@
 			<div class="text-red-600">
 				<h1 class="mb-4 text-2xl font-bold">Authentication Error</h1>
 				<p class="mb-4">{error}</p>
-				<a href="/" class="text-indigo-600 underline hover:text-indigo-800"> Return to home </a>
+				<button
+					onclick={() => (location.href = '/')}
+					class="text-indigo-600 underline hover:text-indigo-800"
+				>
+					Return to home
+				</button>
 			</div>
 		{:else}
 			<div class="space-y-4">
