@@ -41,10 +41,10 @@
 
 	onMount(() => {
 		figureImg = new window.Image();
-		figureImg.src = '/src/routes/figure.png';
+		figureImg.src = 'figure.png';
 		figureImg.onload = () => drawCanvas();
 		spyImg = new window.Image();
-		spyImg.src = '/src/routes/spy.svg';
+		spyImg.src = 'spy.svg';
 		spyImg.onload = () => drawCanvas();
 	});
 
