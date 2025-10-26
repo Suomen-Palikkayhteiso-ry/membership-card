@@ -3,12 +3,11 @@ import { browser } from '$app/environment';
 
 // Configuration - read from environment variables
 const authority =
-	import.meta.env.VITE_PUBLIC_OIDC_AUTHORITY ||
+	import.meta.env.OIDC_AUTHORITY ||
 	'https://lemur-14.cloud-iam.com/auth/realms/suomenpalikkayhteisory';
-const client_id =
-	import.meta.env.VITE_PUBLIC_OIDC_CLIENT_ID || 'd31f9cee-fbe6-4672-8085-76500eb25691';
+const client_id = import.meta.env.OIDC_CLIENT_ID || 'd31f9cee-fbe6-4672-8085-76500eb25691';
 const redirect_uri =
-	import.meta.env.VITE_PUBLIC_OIDC_REDIRECT_URI ||
+	import.meta.env.OIDC_REDIRECT_URI ||
 	(browser
 		? `${window.location.origin}/callback`
 		: 'https://kortti.suomenpalikkayhteisory.fi/callback');

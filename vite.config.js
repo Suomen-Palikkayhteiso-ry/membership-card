@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 const config = {
 	plugins: [tailwindcss(), sveltekit()],
 	base: '/',
-	envPrefix: 'VITE_'
+	envPrefix: 'PUBLIC_'
 };
 
 export default config;
