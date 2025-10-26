@@ -1,0 +1,1 @@
+export const env={"PUBLIC_OIDC_CLIENT_ID":"","PUBLIC_OIDC_AUTHORITY":""}
