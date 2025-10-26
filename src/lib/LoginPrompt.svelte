@@ -1,5 +1,4 @@
 <script lang="ts">
-	/* @ts-ignore */
 	import { FaSignInAlt } from 'svelte-icons/fa';
 	import { login } from '../lib/auth';
 </script>
