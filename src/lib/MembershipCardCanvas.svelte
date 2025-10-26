@@ -12,6 +12,40 @@
 	export let tokenDetails: TokenDetails | null;
 	let canvas: HTMLCanvasElement;
 	let debouncedDraw: () => void;
+	let fontsLoaded = false;
+	let fontsLoadPromise: Promise<void> | null = null;
+
+	async function ensureFontsLoaded() {
+		if (fontsLoaded) {
+			return;
+		}
+		if (fontsLoadPromise) {
+			return fontsLoadPromise;
+		}
+		if (typeof document === 'undefined' || !('fonts' in document)) {
+			fontsLoaded = true;
+			return;
+		}
+
+		const fontDescriptors = ['700 1rem "Outfit"', '400 1rem "Outfit"'];
+		fontsLoadPromise = (async () => {
+			try {
+				const pendingFonts = fontDescriptors.filter(
+					(descriptor) => !document.fonts.check(descriptor)
+				);
+				if (pendingFonts.length > 0) {
+					await Promise.all(pendingFonts.map((descriptor) => document.fonts.load(descriptor)));
+					await document.fonts.ready;
+				}
+			} catch (error) {
+				console.warn('Unable to load fonts for membership card rendering', error);
+			} finally {
+				fontsLoaded = true;
+			}
+		})();
+
+		return fontsLoadPromise;
+	}
 
 	function debounce<T extends (...args: unknown[]) => void>(func: T, wait: number) {
 		let timeout: ReturnType<typeof setTimeout>;
@@ -25,6 +59,7 @@
 		debouncedDraw = debounce(drawCanvas, 250);
 		window.addEventListener('resize', debouncedDraw);
 		await tick();
+		await ensureFontsLoaded();
 		drawCanvas();
 	});
 
@@ -49,12 +84,12 @@
 	});
 
 	// Redraw canvas only when user, tokenDetails, figureImg, or spyImg change
-	$: if (canvas && user && tokenDetails && figureImg && spyImg) {
+	$: if (canvas && user && tokenDetails && figureImg && spyImg && fontsLoaded) {
 		drawCanvas();
 	}
 
 	function drawCanvas() {
-		if (!canvas || !user || !tokenDetails) return;
+		if (!canvas || !user || !tokenDetails || !fontsLoaded) return;
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 		const dpr = window.devicePixelRatio || 1;
