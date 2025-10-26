@@ -137,12 +137,14 @@
 		ctx.font = `700 ${baseFontSize * 1}px 'Outfit', sans-serif`;
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'left';
+		ctx.fillStyle = '#f2f597';
 		ctx.fillText('JÄSENKORTTI', width * 0.62, height * 0.15);
 		ctx.font = `700 ${baseFontSize * 1.2}px 'Outfit', sans-serif`;
+		ctx.fillStyle = '#ffffff';
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'left';
 		ctx.fillText(`${tokenDetails?.name?.toUpperCase()}`, width * 0.05, height * 0.3);
-		ctx.font = `300 ${baseFontSize * 0.6}px 'Outfit', sans-serif`;
+		ctx.font = `700 ${baseFontSize * 0.6}px 'Outfit', sans-serif`;
 		ctx.fillStyle = '#000000';
 		ctx.fillText(
 			`Voimassaolo päättyy: ${tokenDetails?.expiration_date || ''}`,
