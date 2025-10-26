@@ -10,7 +10,6 @@
 			await completeLogin();
 			goto('/');
 		} catch (e) {
-			console.error('Login error:', e);
 			error = e instanceof Error ? e.message : 'Authentication failed';
 		}
 	});
