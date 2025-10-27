@@ -152,9 +152,9 @@
 
 		// Draw spy.svg in the lower left corner
 		if (spyImg && spyImg.complete) {
-			const spySize = width * 0.15;
-			const spyX = width * 0.03;
-			const spyY = height - spySize - height * 0.03;
+			const spySize = width * 0.25;
+			const spyX = width * 0.025;
+			const spyY = height - spySize + height * 0.025;
 			ctx.drawImage(spyImg, spyX, spyY, spySize, spySize);
 		}
 
@@ -178,21 +178,21 @@
 		ctx.fillStyle = '#ffffff';
 		ctx.fillStyle = 'white';
 		ctx.textAlign = 'left';
-		ctx.fillText(`${tokenDetails?.name?.toUpperCase()}`, width * 0.05, height * 0.3);
+		ctx.fillText(`${tokenDetails?.name?.toUpperCase()}`, width * 0.04, height * 0.275);
 		ctx.font = `700 ${baseFontSize * 0.6}px 'Outfit', sans-serif`;
 		ctx.fillStyle = '#000000';
 		ctx.fillText(
 			`Voimassaolo päättyy: ${tokenDetails?.expiration_date || ''}`,
-			width * 0.05,
-			height * 0.4
+			width * 0.04,
+			height * 0.35
 		);
 		ctx.fillText(
 			`Liittymispäivä: ${tokenDetails?.effective_date || ''}`,
-			width * 0.05,
-			height * 0.475
+			width * 0.04,
+			height * 0.425
 		);
-		ctx.fillText(`Discord: ${tokenDetails?.discord || ''}`, width * 0.05, height * 0.675);
-		ctx.fillText(`Bricklink: ${tokenDetails?.bricklink || ''}`, width * 0.05, height * 0.6);
+		ctx.fillText(`Discord: ${tokenDetails?.discord || ''}`, width * 0.04, height * 0.6);
+		ctx.fillText(`Bricklink: ${tokenDetails?.bricklink || ''}`, width * 0.04, height * 0.525);
 	}
 </script>
 

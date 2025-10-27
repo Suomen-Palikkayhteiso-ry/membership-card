@@ -14,12 +14,14 @@
 		style="background:none;border:none;padding:0;cursor:pointer;color: #52d3d8;"
 	>
 		<FaSignInAlt size="10vw" />
+		<h1 style="text-transform:uppercase">Avaa tästä</h1>
 	</button>
 </div>
 
 <style>
 	.centered-icon {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
