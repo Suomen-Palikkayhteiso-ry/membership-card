@@ -153,9 +153,10 @@
 		// Draw spy.svg in the lower left corner
 		if (spyImg && spyImg.complete) {
 			const spySize = width * 0.25;
+			const spyScale = spySize / spyImg.width;
 			const spyX = width * 0.025;
-			const spyY = height - spySize + height * 0.025;
-			ctx.drawImage(spyImg, spyX, spyY, spySize, spySize);
+			const spyY = height - spySize + height * 0.08;
+			ctx.drawImage(spyImg, spyX, spyY, spySize, spyImg.height * spyScale);
 		}
 
 		// Draw figure.png on the right side of the card
